@@ -11,6 +11,13 @@ class Personne(models.Model):
     faits = models.TextField()
     fonctions = models.TextField()
     oeuvres = models.ManyToManyField(Oeuvre)
+    ajouteePar = models.ForeignKey(UserProfile, unique=True)
+    nbrFavoris = models.IntegerField(default=0)
+    nbrCommentaire = models.IntegerField(default=0)
+
+class Commentaire(models.Model):
+	commentaire = models.TextField()
+	pseudo = models.OneToOneField(Personne, on_delete=models.CASCADE, primary_key=True)
 
 class Oeuvre(models.Model):
     titre = models.CharField(max_length=50)

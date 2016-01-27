@@ -1,0 +1,22 @@
+{% load staticfiles %}
+<html>
+    <head>
+        <title>Django Girls blog</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="{% static 'css/root.css' %}">
+    </head>
+    <body>
+        <div class="page_title">
+            <h1><a href="/">Roots</a></h1>
+        </div>
+        {% for personne in personnes %}
+            <div class="portrait_mini">
+                <p>published: {{ personne.published_date }}</p>
+                <h1><a href="">{{ personne.nom | personne.nom}}</a></h1>
+                <p>{{ personne.nbrFavoris }}</p>
+                <p>{{ personne.nbrCommentaire }}</p>
+            </div>
+        {% endfor %}
+    </body>
+</html>
