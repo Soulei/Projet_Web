@@ -10,10 +10,15 @@ class Personne(models.Model):
     faits = 
     fonctions = 
     oeuvres = 
-
         
 class UserProfile(models.Model):
+    url = models.URLField()
+    nom = models.CharField(max_length=30)
+    prenom = models.CharField(max_length=30)
+    pseudo = models.CharField(max_length=30)
+    mail_adresse = models.EmailField()
+    favoris = models.ManyToManyField(Personne)
+    user = models.ForeignKey(User, unique=True)
     
-class Favoris(models.Model):
-    
-
+    def __str__(self):
+        return "%s %s" % (self.pseudo, self.mail_adresse)
