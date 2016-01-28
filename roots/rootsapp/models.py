@@ -1,8 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+class Oeuvre(models.Model):
+    titre = models.CharField(max_length=50)
+    date_parution = models.DateField()
+
 class Personne(models.Model):
-    image = models.ImageField()
+    image = models.CharField(max_length=50)
     nom = models.CharField(max_length=30)
     prenom = models.CharField(max_length=30)
     date_naissance = models.DateField()
@@ -11,17 +15,9 @@ class Personne(models.Model):
     faits = models.TextField()
     fonctions = models.TextField()
     oeuvres = models.ManyToManyField(Oeuvre)
-    ajouteePar = models.ForeignKey(UserProfile, unique=True)
+    #ajouteePar = models.ForeignKey(UserProfile, unique=True)
     nbrFavoris = models.IntegerField(default=0)
     nbrCommentaire = models.IntegerField(default=0)
-
-class Commentaire(models.Model):
-	commentaire = models.TextField()
-	pseudo = models.OneToOneField(Personne, on_delete=models.CASCADE, primary_key=True)
-
-class Oeuvre(models.Model):
-    titre = models.CharField(max_length=50)
-    date_parution = models.DateField()
      
 class UserProfile(models.Model):
     url = models.URLField()
@@ -35,3 +31,6 @@ class UserProfile(models.Model):
     def __str__(self):
         return "%s %s" % (self.pseudo, self.mail_adresse)
 
+class Commentaire(models.Model):
+	commentaire = models.TextField()
+	pseudo = models.OneToOneField(Personne, on_delete=models.CASCADE, primary_key=True)
