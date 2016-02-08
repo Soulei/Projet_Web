@@ -1,0 +1,11 @@
+{% extends 'roots/base.html' %}
+
+    {% block content %}
+             <div class="user_profile">
+                <h1>{{ user_profile.pseudo }}</h1>
+                    <h2>Avatar</h2>
+                        <p><img src="{{ user_profile.photo.url }}"></p>
+                    <h2>Informations</h2>
+                        <p>{{ user_profile.prenom }} {{ user_profile.nom }}</p>
+            </div>
+    {% endblock content %}

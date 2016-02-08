@@ -1,0 +1,38 @@
+{% extends 'roots/base.html' %}
+    {% block content %}
+        <div id="fh5co-services">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="row">
+                          <h2>{{ portraits.prenom }} {{ portraits.nom }}</h2>
+                          <p class="text-center"><img src="{{ portraits.photo.url }}" class="img-responsive"></p>
+                          <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 fh5co-service">
+                          <div class="fh5co-icon to-animate"><i class="glyphicon glyphicon-calendar"></i></div>
+                              <div class="fh5co-desc">
+                                  <h3>Dates</h3>
+                                  <p>Naissance : {{ portraits.date_naissance }} </p>
+                                  <p>Décès : {{ portraits.date_mort }} </p>
+                              </div>
+                          </div>
+                          <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 fh5co-service">
+                            <div class="fh5co-icon to-animate"><i class="glyphicon glyphicon-eye-open"></i></div>
+                            <div class="fh5co-desc">
+                              <h3>Description</h3>
+                              <p>{{ portraits.description|linebreaks }}</p>
+                            </div>
+                          </div>
+                          <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 fh5co-service">
+                            <div class="fh5co-icon to-animate"><i class="glyphicon glyphicon-comment"></i></div>
+                            <div class="fh5co-desc">
+                              <h3>Citations</h3>
+                              <p>{{ portraits.citations|linebreaks }}</p>
+                            </div>
+                          </div>
+                <h3 class="text-center">TEXTE</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    {% endblock content %}
