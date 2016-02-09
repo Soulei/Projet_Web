@@ -14,6 +14,8 @@ urlpatterns = [
 
     url(r'^user_profile/(?P<pk>[0-9]+)/$', views.user_detail, name='user_detail'),
     url(r'^register/$', views.register, name='register'),
+    url(r'^user_logout/$', views.user_logout, name='user_logout'),
+    url('^', include('django.contrib.auth.urls'))
 ]
 
 urlpatterns += staticfiles_urlpatterns()

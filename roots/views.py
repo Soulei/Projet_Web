@@ -5,6 +5,8 @@ from .forms import PortraitsForm, CommentaireForm, UserProfileForm, UserForm
 from django.shortcuts import redirect
 from django.template import RequestContext
 from django.shortcuts import render_to_response
+from django.contrib.auth import logout, login
+from django.contrib.auth.decorators import login_required
 
 def portraits_list(request):
     portraits = Portraits.objects.filter(date_publication__lte=timezone.now()).order_by('date_publication')
@@ -14,6 +16,7 @@ def portraits_detail(request, pk):
     portraits = get_object_or_404(Portraits, pk=pk)
     return render(request, 'roots/portraits_detail.html', {'portraits': portraits})
 
+@login_required
 def portraits_new(request):
     if request.method == "POST":
         form = PortraitsForm(request.POST)
@@ -27,6 +30,7 @@ def portraits_new(request):
         form = PortraitsForm()
     return render(request, 'roots/portraits_edit.html', {'form': form})
 
+@login_required
 def add_commentaire_to_portraits(request, pk):
     portraits = get_object_or_404(Portraits, pk=pk)
     if request.method == "POST":
@@ -72,6 +76,11 @@ def register(request):
         profile_form = UserProfileForm()
     return render_to_response('roots/register.html',{'user_form': user_form, 'profile_form': profile_form, 'registered': registered}, context)
 
+# Use the login_required() decorator to ensure only those logged in can access the view.
+@login_required
+def user_logout(request):
+    logout(request)
+    return render('/roots/')
 
 def comment_approve(request, pk):
     comment = get_object_or_404(Comment, pk=pk)

@@ -1,11 +1,12 @@
 from django import forms
 from .models import Portraits, Commentaire, UserProfile
 from django.contrib.auth.models import User
+from django.contrib.auth.forms import *
 
-
-class ConnexionForm(forms.Form):
-    username = forms.CharField(label="Nom d'utilisateur", max_length=30)
-    password = forms.CharField(label="Mot de passe", widget=forms.PasswordInput)
+#Par exemple, pour permettre à tous les utilisateurs de se connecter, indépendamment de leur statut « actif »
+class AuthenticationFormWithInactiveUsersOkay(AuthenticationForm):
+    def confirm_login_allowed(self, user):
+        pass
 
 class PortraitsForm(forms.ModelForm):
     class Meta:

@@ -17,7 +17,7 @@
     <!-- Google Webfonts -->
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,100,500' rel='stylesheet' type='text/css'>
     <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,300,100,500' rel='stylesheet' type='text/css'>
-    
+
     <!-- Animate.css -->
     <link rel="stylesheet" href="{% static 'css/animate.css' %}">
     <!-- Theme Style -->
@@ -31,13 +31,13 @@
 
     </head>
     <body>
-        
+
     <header id="fh5co-header" role="banner">
         <nav class="navbar navbar-default" role="navigation">
             <div class="container">
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1">
-                        <div class="navbar-header"> 
+                        <div class="navbar-header">
                         <!-- Mobile Toggle Menu Button -->
                         <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle visible-xs-block" data-toggle="collapse" data-target="#fh5co-navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
                         <a class="navbar-brand" href="{% url 'portraits_list' %}">Roots</a>
@@ -55,8 +55,13 @@
                                 </form>
                                 </li>
                                 <li class="active"><a href="{% url 'portraits_list' %}"><i class="glyphicon glyphicon-home"></i></span></span></a></li>
-                                <li class="active"><a href="{% url 'portraits_new' %}"><i class="glyphicon glyphicon-plus"></i></span></span></a></li>
-                                <li class="active"><a href="{% url 'register' %}"><i class="glyphicon glyphicon-user"></i></span></span></a></li>
+                                {% if user.is_authenticated %}
+                                  <li class="active"><a href="{% url 'portraits_new' %}"><i class="glyphicon glyphicon-plus"></i></span></span></a></li>
+                                  <li class="active"><a href="{% url 'user_logout' %}"><i class="glyphicon glyphicon-lock"></i></span></span></a></li>
+                                  <li class="active"><a href="{% url 'user_detail' %}"><i class="glyphicon glyphicon-user">Profile</i></span></span></a></li>
+                                {% else %}
+                                  <li class="active"><a href="{% url 'register' %}"><i class="glyphicon glyphicon-lock">Log</i></span></span></a></li>
+                                {% endif %}
                             </ul>
                         </div>
                     </div>
@@ -74,8 +79,8 @@
                             <h2 class="section-lead text-center">Portraits</h2>
                             <p class="text-center">“Study the past if you would define the future.” - Confucius</p>
                                 {% block content %}
-                                {% endblock %}  
-                           
+                                {% endblock %}
+
                         </div>
                     </div>
                 </div>
@@ -105,6 +110,6 @@
     <!-- Main JS -->
     <script src="{% static 'js/main.js' %}"></script>
 
-    
+
     </body>
 </html>
