@@ -12,10 +12,11 @@ urlpatterns = [
     url(r'^comment/(?P<pk>[0-9]+)/approve/$', views.comment_approve, name='comment_approve'),
     url(r'^comment/(?P<pk>[0-9]+)/remove/$', views.comment_remove, name='comment_remove'),
 
-    url(r'^user_profile/(?P<pk>[0-9]+)/$', views.user_detail, name='user_detail'),
+    url(r'^profile/$', views.user_detail, name='user_detail'),
     url(r'^register/$', views.register, name='register'),
-    url(r'^user_logout/$', views.user_logout, name='user_logout'),
-    url('^', include('django.contrib.auth.urls'))
+    url(r'^logout/$', views.user_logout, name='logout'),
+    url(r'^login/$', views.user_login,name='login'),
+    url(r'^error/$', views.error,name='error'),
 ]
 
 urlpatterns += staticfiles_urlpatterns()

@@ -8,6 +8,10 @@ class AuthenticationFormWithInactiveUsersOkay(AuthenticationForm):
     def confirm_login_allowed(self, user):
         pass
 
+class LoginForm(forms.Form):
+	username = forms.CharField(max_length=100)
+	password = forms.CharField(widget=forms.PasswordInput(render_value=False),max_length=100)
+
 class PortraitsForm(forms.ModelForm):
     class Meta:
         model = Portraits

@@ -1,11 +1,11 @@
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
 from .models import Portraits
-from .forms import PortraitsForm, CommentaireForm, UserProfileForm, UserForm
+from .forms import PortraitsForm, CommentaireForm, UserProfileForm, UserForm, LoginForm
 from django.shortcuts import redirect
 from django.template import RequestContext
 from django.shortcuts import render_to_response
-from django.contrib.auth import logout, login
+from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.decorators import login_required
 
 def portraits_list(request):
@@ -45,8 +45,8 @@ def add_commentaire_to_portraits(request, pk):
         form = CommentaireForm()
     return render(request, 'roots/add_commentaire_to_portraits.html', {'form': form})
 
-def user_detail(request, pk):
-    user_profile = get_object_or_404(User, pk=pk)
+def user_detail(request):
+    user_profile = get_object_or_404(User)
     return render(request, 'roots/user_detail.html', {'user_profile': user_profile})
 
 def register(request):
@@ -76,11 +76,29 @@ def register(request):
         profile_form = UserProfileForm()
     return render_to_response('roots/register.html',{'user_form': user_form, 'profile_form': profile_form, 'registered': registered}, context)
 
-# Use the login_required() decorator to ensure only those logged in can access the view.
-@login_required
+def user_login(request):
+    if request.method == 'POST':
+        form = LoginForm(data = request.POST)
+        if form.is_valid():
+            username = request.POST['username']
+            password = request.POST['password']
+            user = authenticate(username=username, password=password)
+            if user is not None:
+                if user.is_active:
+                    login(request, user)
+                    return render(request,'roots/base.html')
+                else:
+                    return redirect('roots/error.html')
+    else:
+        form = LoginForm()
+    return render(request, 'roots/login.html', {'form': form,})
+
+def error(request):
+    return render(request, 'roots/error.html')
+
 def user_logout(request):
     logout(request)
-    return render('/roots/')
+    return render(request, 'roots/base.html')
 
 def comment_approve(request, pk):
     comment = get_object_or_404(Comment, pk=pk)
