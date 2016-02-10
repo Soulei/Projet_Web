@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
 from django.utils import timezone
-from .models import Portraits
+from .models import Portraits, UserProfile, Commentaire
 from .forms import PortraitsForm, CommentaireForm, UserProfileForm, UserForm, LoginForm
 from django.shortcuts import redirect
 from django.template import RequestContext
@@ -46,7 +46,7 @@ def add_commentaire_to_portraits(request, pk):
     return render(request, 'roots/add_commentaire_to_portraits.html', {'form': form})
 
 def user_detail(request):
-    user_profile = get_object_or_404(User)
+    user_profile = get_object_or_404(UserProfile)
     return render(request, 'roots/user_detail.html', {'user_profile': user_profile})
 
 def register(request):
