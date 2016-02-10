@@ -110,7 +110,10 @@ sub {
 
 img {
   border: 0;
+<<<<<<< HEAD
   margin: 0 auto;
+=======
+>>>>>>> a599eec19fd8cf31975ff240c9f5fae076f1d949
 }
 
 svg:not(:root) {
@@ -7560,7 +7563,11 @@ h1, h2, h3, h4, h5, h6 {
 
 #fh5co-team {
   clear: both;
+<<<<<<< HEAD
   padding: 3em 0;
+=======
+  padding: 7em 0;
+>>>>>>> a599eec19fd8cf31975ff240c9f5fae076f1d949
 }
 @media screen and (max-width: 768px) {
   #fh5co-team {
@@ -7599,7 +7606,10 @@ h1, h2, h3, h4, h5, h6 {
 #fh5co-services {
   padding: 7em 0;
   background: #fafafa;
+<<<<<<< HEAD
   border: 1px solid #e32929;
+=======
+>>>>>>> a599eec19fd8cf31975ff240c9f5fae076f1d949
 }
 @media screen and (max-width: 768px) {
   #fh5co-services {
@@ -8261,3 +8271,8 @@ a > img.fh5co-align-center {
   margin-left: auto;
   margin-right: auto;
 }
+<<<<<<< HEAD
+=======
+
+/*# sourceMappingURL=style.css.map */
+>>>>>>> a599eec19fd8cf31975ff240c9f5fae076f1d949

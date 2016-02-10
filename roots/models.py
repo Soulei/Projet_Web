@@ -4,7 +4,7 @@ from django.contrib.auth.models import User
 
 
 class Portraits(models.Model):
-    photo = models.ImageField(upload_to = 'roots/static/images/', default = 'pasDimageDispo.png')
+    photo = models.ImageField(upload_to = 'images/', default = 'pasDimageDispo.png')
     nom = models.CharField(max_length=30)
     prenom = models.CharField(max_length=30)
     date_naissance = models.DateField()
