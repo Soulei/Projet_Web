@@ -32,21 +32,21 @@
     </head>
     <body>
 
-    <header id="fh5co-header" role="banner">
+    <header id="roots_projet-header" role="banner">
         <nav class="navbar navbar-default" role="navigation">
             <div class="container">
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1">
                         <div class="navbar-header">
                         <!-- Mobile Toggle Menu Button -->
-                        <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle visible-xs-block" data-toggle="collapse" data-target="#fh5co-navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
+                        <a href="#" class="js-roots_projet-nav-toggle roots_projet-nav-toggle visible-xs-block" data-toggle="collapse" data-target="#roots_projet-navbar" aria-expanded="false" aria-controls="navbar"><i></i></a>
                         <a class="navbar-brand" href="{% url 'portraits_list' %}">Roots</a>
                         </div>
 
-                        <div id="fh5co-navbar" class="navbar-collapse collapse">
+                        <div id="roots_projet-navbar" class="navbar-collapse collapse">
                             <ul class="nav navbar-nav navbar-right">
                                 <li>
-                                    <form class="navbar-form" role="search" method="get" action="/search/">
+                                    <form class="navbar-form" role="search" method="GET" action="/search/">
                                         <div class="input-group">
                                             <input type="text" class="form-control" placeholder="Search" id="srch-term" type="text" name="q" id="id_q" value="{{ query }}"/>
                                             <div class="input-group-btn">
@@ -59,7 +59,7 @@
                                 {% if user.is_authenticated %}
                                   <li class="active"><a href="{% url 'portraits_new' %}"><i class="glyphicon glyphicon-plus"></i></span></span></a></li>
                                   <li class="active"><a href="{% url 'logout' %}"><i class="glyphicon glyphicon-lock"></i></span></span></a></li>
-                                  <li class="active"><a href="{% url 'user_detail' %}"><i class="glyphicon glyphicon-user">Profile</i></span></span></a></li>
+                                  <li class="active"><a href="{% url 'user_detail' %}"><i class="glyphicon glyphicon-user">Profil</i></span></span></a></li>
                                 {% else %}
                                   <li class="active"><a href="{% url 'register' %}"><i class="glyphicon glyphicon-lock">Log</i></span></span></a></li>
                                 {% endif %}
@@ -72,22 +72,20 @@
     </header>
     <!-- END .header -->
 
-        <div id="fh5co-team">
+        <div id="roots_projet-team">
             <div class="container">
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1">
                         <div class="row">
                             <h2 class="section-lead text-center">Portraits</h2>
-                            <p class="text-center">“Study the past if you would define the future.” - Confucius</p>
-                                {% block content %}
-                                {% endblock %}
+                            <p class="text-center">“Study the past if you would define the future.” - Confucius</p> 
                         </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <div id="fh5co-team">
+        <div id="roots_projet-team">
             <div class="container">
                 <div class="row">
                     {% block content %}
@@ -96,7 +94,7 @@
             </div>
         </div>
 
-    <footer id="fh5co-footer">
+    <footer id="roots_projet-footer">
         <div class="container">
             <div class="row">
                 <div class="col-md-10 col-md-offset-1 text-center">

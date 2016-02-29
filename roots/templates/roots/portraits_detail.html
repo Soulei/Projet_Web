@@ -1,7 +1,7 @@
 {% extends 'roots/base.html' %}
     {% block content %}
 
-        <div id="fh5co-team">
+        <div id="roots_projet-team">
             <div class="container">
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1">
@@ -16,31 +16,29 @@
             </div>
         </div>
 
-        <div id="fh5co-services">
+        <div id="roots_projet-services">
             <div class="container">
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1">
                         <div class="row">
-                          <h2>{{ portraits.prenom }} {{ portraits.nom }}</h2>
-                          <p class="text-center"><img src="{{ portraits.photo.url }}" class="img-responsive"></p>
-                          <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 fh5co-service">
-                          <div class="fh5co-icon to-animate"><i class="glyphicon glyphicon-calendar"></i></div>
-                              <div class="fh5co-desc">
+                          <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 roots_projet-service">
+                          <div class="roots_projet-icon to-animate"><i class="glyphicon glyphicon-calendar"></i></div>
+                              <div class="roots_projet-desc">
                                   <h3>Dates</h3>
                                   <p>Né(e) le {{ portraits.date_naissance }} </p>
                                   <p>Mort(e) le {{ portraits.date_mort }} </p>
                               </div>
                           </div>
-                          <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 fh5co-service">
-                            <div class="fh5co-icon to-animate"><i class="glyphicon glyphicon-eye-open"></i></div>
-                            <div class="fh5co-desc">
+                          <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 roots_projet-service">
+                            <div class="roots_projet-icon to-animate"><i class="glyphicon glyphicon-eye-open"></i></div>
+                            <div class="roots_projet-desc">
                               <h3>Description</h3>
                               <p>{{ portraits.description|linebreaks }}</p>
                             </div>
                           </div>
-                          <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 fh5co-service">
-                            <div class="fh5co-icon to-animate"><i class="glyphicon glyphicon-comment"></i></div>
-                            <div class="fh5co-desc">
+                          <div class="col-md-4 col-sm-6 col-xs-6 col-xxs-12 roots_projet-service">
+                            <div class="roots_projet-icon to-animate"><i class="glyphicon glyphicon-comment"></i></div>
+                            <div class="roots_projet-desc">
                               <h3>Citations</h3>
                               <p>{{ portraits.citations|linebreaks }}</p>
                             </div>
@@ -51,7 +49,7 @@
             </div>
       </div>
 
-      <div id="fh5co-team">
+      <div id="roots_projet-team">
             <div class="container">
                 <div class="row">
                     <div class="col-md-10 col-md-offset-1">
@@ -71,7 +69,10 @@
                             <h6 class="text-center">Ajouté(e) par {{ portraits.ajouteePar }}</h6>
                             <h6 class="text-center">le {{ portraits.date_publication }}</h6>
                         </div>
-                        <div class="row commentaire">
+                        <div class="row">
+                            <a class="active"><a href="{% url 'portraits_new' %}"><i class="glyphicon glyphicon-heart"></i></span></span></a></a>
+                        </div>
+                        <div class="row commentaire" id=ancreCommenantaire>
                             <a class="btn btn-default" href="{% url 'add_commentaire_to_portraits' pk=portraits.pk %}">Ajouter un commentaire</a>
                             {% for commentaire in portraits.commentaires.all %}
                             <div class="date">{{ commentaire.date_creation }}</div>

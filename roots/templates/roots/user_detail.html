@@ -1,11 +1,22 @@
 {% extends 'roots/base.html' %}
 
     {% block content %}
-             <div class="user_profile">
-                <h1>{{ user_profile.pseudo }}</h1>
-                    <h2>Avatar</h2>
-                        <p><img src="{{ user_profile.photo.url }}"></p>
-                    <h2>Informations</h2>
-                        <p>{{ user_profile.prenom }} {{ user_profile.nom }}</p>
+    <div id="roots_projet-team">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-10 col-md-offset-1">
+                        <div class="row">
+                            <h2 class="text-center">{{ user.username }}</h2>
+                              <figure>
+                                <p class="text-center"><img src="{{ userprofile.avatar.url }}" class="img-responsive"></p>
+                              </figure>
+                              <h2 class="text-center">Informations</h2>
+                              	<p class="text-center">Pseudo : {{ user.username }}</p>
+		                        <p class="text-center">Email : {{ user.email }} </p>
+		                        <p class="text-center">Date d'inscription : {{ user.date_joined }} </p>
+                        </div>
+                    </div>
+                </div>
             </div>
+        </div>
     {% endblock content %}

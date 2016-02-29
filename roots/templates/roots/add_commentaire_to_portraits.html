@@ -1,9 +1,18 @@
 {% extends 'roots/base.html' %}
 
 {% block content %}
-    <h1>Nouveau commentaire</h1>
+    <h2>Commentaire</h2>
     <form method="POST" class="portraits-form">{% csrf_token %}
-        {{ form.as_p }}
+          <div class="form-group">
+          <div class="login-form"><!--login form-->
+            <table>
+                <tr>
+                  <td>{{ form.texte }}</td>
+                </tr>
+            </table>
+          </div>
+        </div>
+
         <button type="submit" class="save btn btn-default">Publier</button>
     </form>
 {% endblock %}

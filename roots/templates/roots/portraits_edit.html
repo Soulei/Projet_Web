@@ -4,6 +4,6 @@
     <h1>Nouveau portrait</h1>
     <form method="POST" class="portraits-form" enctype="multipart/form-data">{% csrf_token %}
         {{ form.as_p }}
-        <button type="submit" class="save btn btn-default">Save</button>
+        <button type="submit" class="save btn btn-default">Enregistrer</button>
     </form>
 {% endblock %}

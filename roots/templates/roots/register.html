@@ -14,8 +14,28 @@
                             <h2>Inscrivez-vous</h2>
                             <form id="user_form" method="post" action="/register/" enctype="multipart/form-data">{% csrf_token %}
                             <div class="form-group">
-                                {{ user_form.as_p }}
-                                {{ profile_form.as_p }}
+                                <table>
+                                    <tr>
+                                        <td>{{ user_form.username.label_tag }}</td>
+                                        <td>{{ user_form.username }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ user_form.last_name.label_tag }}</td>
+                                        <td>{{ user_form.last_name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ user_form.first_name.label_tag }}</td>
+                                        <td>{{ user_form.first_name }}</td>
+                                    </tr>
+                                    <tr>
+                                        <td>{{ user_form.email.label_tag }}</td>
+                                        <td>{{ user_form.email }}</td>
+                                    <tr>
+                                        <td>{{ user_form.password.label_tag }}</td>
+                                        <td>{{ user_form.password }}</td>
+                                    </tr>
+                                    </tr>
+                                </table>
                             </div>
                                 <input type="submit" class="btn btn-default" name="submit" value="S'inscrire" />
                             </form>
