@@ -3,7 +3,6 @@ from .models import Portraits, Commentaire, UserProfile
 from django.contrib.auth.models import User
 from django.contrib.auth.forms import *
 
-#Par exemple, pour permettre à tous les utilisateurs de se connecter, indépendamment de leur statut « actif »
 class AuthenticationFormWithInactiveUsersOkay(AuthenticationForm):
     def confirm_login_allowed(self, user):
         pass
@@ -27,7 +26,7 @@ class UserForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('username','email','password',)
+        fields = ('username', 'last_name', 'first_name','email','password',)
 
 class UserProfileForm(forms.ModelForm):
     class Meta:

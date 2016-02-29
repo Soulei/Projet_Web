@@ -1,10 +1,8 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect, render_to_response
 from django.utils import timezone
 from .models import Portraits, UserProfile, Commentaire
 from .forms import PortraitsForm, CommentaireForm, UserProfileForm, UserForm, LoginForm
-from django.shortcuts import redirect
 from django.template import RequestContext
-from django.shortcuts import render_to_response
 from django.contrib.auth import logout, login, authenticate
 from django.contrib.auth.decorators import login_required
 
@@ -46,7 +44,7 @@ def add_commentaire_to_portraits(request, pk):
     return render(request, 'roots/add_commentaire_to_portraits.html', {'form': form})
 
 def user_detail(request):
-    user_profile = get_object_or_404(UserProfile)
+    user_profile = request.user
     return render(request, 'roots/user_detail.html', {'user_profile': user_profile})
 
 def register(request):
@@ -112,13 +110,17 @@ def comment_remove(request, pk):
     return redirect('roots.views.post_detail', pk=post_pk)
 
 def search(request):
-    context = RequestContext(request)
     try:
         q = request.GET['q']
-        posts = Portraits.objects.filter(nom__search=q) | \
-                Portraits.objects.filter(prenom__search=q) | \
-                Portraits.objects.filter(citations__search=q) | \
-                Portraits.objects.filter(oeuvres__search=q)
-        return render_to_response('roots/results.html', {'posts':posts, 'q':q}, context)
+        results = Portraits.objects.filter(nom__icontains=str(q)) | \
+                Portraits.objects.filter(prenom__icontains=str(q)) | \
+                Portraits.objects.filter(citations__icontains=str(q)) | \
+                Portraits.objects.filter(oeuvres__icontains=str(q))
+        return render(request, 'roots/results.html', {'results':results, 'q':q})
     except KeyError:
-        return render_to_response('roots/results.html')
+        return render(request, 'roots/results.html')
+
+def like(request):
+    like_recv = request.portraits
+    like_recv.like = F('like') + 1
+    like.save()

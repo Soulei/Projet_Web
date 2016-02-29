@@ -21,6 +21,8 @@ urlpatterns = [
 
     url(r'^search/$', views.search, name='search'),
 
+    url(r'^like/$', views.user_login,name='like'),
+
 ]
 
 urlpatterns += staticfiles_urlpatterns()
