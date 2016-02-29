@@ -1,10 +1,24 @@
-# Projet_Web
-Projet Archi-Web L3 SPI
+# Projet Archi-Web L3 SPI
 
-Nature du projet : site de partage de portraits de personnages historiques remarquables
+- Nature du projet : site de partage de portraits de personnages historiques remarquables
+- Nom du projet : Roots
+- Prérequis : Django, Python, Bootstrap, HTML, CSS
+- Auteurs : Souleiman Iman Choukri & Bouhandi Merieme
 
-Nom du projet : Roots
+# Dêpot git du projet
 
-Prérequis : Django, Python, Bootstrap, HTML, CSS
+- $ git clone https://github.com/Soulei/Projet_Web.git
 
-Choukri : Back-end & Merieme : Front-end
+# Librairies nécessaires
+
+- Pillow
+
+# Base de données
+
+- $ python manage.py migrate
+- $ python manage.py makemigrations roots
+- $ python manage.py migrate
+
+# Lancement
+
+- $ python manage.py runserver ip_serveur:port
