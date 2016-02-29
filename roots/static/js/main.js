@@ -16,8 +16,8 @@
 
 	// Burger Menu
 	var burgerMenu = function() {
-		$('body').on('click', '.js-fh5co-nav-toggle', function(){
-			if ( $('#fh5co-navbar').is(':visible') ) {
+		$('body').on('click', '.js-roots_projet-nav-toggle', function(){
+			if ( $('#roots_projet-navbar').is(':visible') ) {
 				$(this).removeClass('active');	
 			} else {
 				$(this).addClass('active');	
@@ -45,8 +45,8 @@
 
 	// Animate Leadership
 	var animateTeam = function() {
-		if ( $('#fh5co-team').length > 0 ) {	
-			$('#fh5co-team .to-animate').each(function( k ) {
+		if ( $('#roots_projet-team').length > 0 ) {	
+			$('#roots_projet-team .to-animate').each(function( k ) {
 				
 				var el = $(this);
 				
@@ -59,8 +59,8 @@
 		}
 	};
 	var teamWayPoint = function() {
-		if ( $('#fh5co-team').length > 0 ) {
-			$('#fh5co-team').waypoint( function( direction ) {
+		if ( $('#roots_projet-team').length > 0 ) {
+			$('#roots_projet-team').waypoint( function( direction ) {
 										
 				if( direction === 'down' && !$(this.element).hasClass('animated') ) {
 
@@ -77,8 +77,8 @@
 
 	// Animate Feature
 	var animateFeatureIcons = function() {
-		if ( $('#fh5co-services').length > 0 ) {	
-			$('#fh5co-services .to-animate').each(function( k ) {
+		if ( $('#roots_projet-services').length > 0 ) {	
+			$('#roots_projet-services .to-animate').each(function( k ) {
 				
 				var el = $(this);
 				
@@ -90,8 +90,8 @@
 		}
 	};
 	var featureIconsWayPoint = function() {
-		if ( $('#fh5co-services').length > 0 ) {
-			$('#fh5co-services').waypoint( function( direction ) {
+		if ( $('#roots_projet-services').length > 0 ) {
+			$('#roots_projet-services').waypoint( function( direction ) {
 										
 				if( direction === 'down' && !$(this.element).hasClass('animated') ) {
 					
